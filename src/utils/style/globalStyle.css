@@ -1,0 +1,10 @@
+@import url('http://fonts.cdnfonts.com/css/valorant');
+
+* {
+    font-family: 'VALORANT';
+}
+
+body {
+    margin: 0;
+    background-color: #FF4656;
+}
