@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import AbilitiesCards from '../../components/AbilitiesCards';
 import Cards from '../../components/Cards';
+
+var _ = require('lodash')
 
 function Characters() {
 
@@ -27,22 +28,29 @@ function Characters() {
          fetchSurvey()
        }, [])
 
-        Array.from(RadiantData).map((value, index) => (
-            console.log(value)
-        ))
+       var radiantId = null
+
+       function SetRadiant(RadiantData) {
+          radiantId = RadiantData.uuid
+       }
+
+       console.log(RadiantData)
 
     return (
-        <div>
-          <h1 className="H1Style">AGENTS</h1>
-          <div className="DivContainer">
-              
-              {
-                  Array.from(RadiantData).map((value, index) => (
-                      <Cards name={value.displayName} role={value.role['displayName']} picture={value.fullPortrait} icon={value.abilities} />
-                  ))
-              }
-          </div>
+      <div>
+        <div className="DivSupremeContainer">
+            <div className="DivContainerCharacter">
+              <h1 className="H1Style">AGENTS</h1>
+              <div className="DivContainer">
+                  {
+                      Array.from(RadiantData).map((value, index) => (
+                          <Cards data={value} SetRad={SetRadiant}/>
+                      ))
+                  }
+              </div>
+            </div>
         </div>
+      </div>
     )
 
 }

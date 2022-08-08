@@ -1,25 +1,19 @@
-function Cards({ name, role, picture, icon}) {
+import _ from "lodash";
+
+function Cards({ data, SetRad }) {
 
     return (
-        <div className="DivCards">
+        <div className="DivCards" onClick={()=>SetRad(data.displayName)}>
             <header>
-                <h3>{role}</h3>
-                <h2>{name}</h2>
+                <h3>{data.role.displayName}</h3>
+                <h2>{data.displayName}</h2>
             </header>
-            <img src={picture} alt={name} />
+            <img src={data.fullPortrait} alt={data.displayName} className="ImgCharacter" />
             <div className="DivAbilities">
             {
-                
-                // eslint-disable-next-line array-callback-return
-                icon.map(function(elemnt){
-                    if(!(elemnt.slot === 'Passive'))
-                    {
-                        return (
-                            
-                                <img className="ImgAbilities" src={elemnt.displayIcon} alt='' height={80} width={80} />  
-                        )
-                    }
-                })
+                _.map(_.filter(data.abilities, ability => ability.slot !== 'Passive'),
+                    ability => <img className="ImgAbilities" src={ability.displayIcon} alt='' height={80} width={80} />
+                )
             }
             </div>
         </div>

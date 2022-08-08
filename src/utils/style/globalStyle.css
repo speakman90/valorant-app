@@ -8,6 +8,22 @@ body {
     margin: 0;
 }
 
+.DivSupremeContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url('../../assets/valorant-background.jpg') center no-repeat
+}
+
+.DivContainerCharacter {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: #e8404edc;
+}
+
 .DivContainer {
     width: 50%;
     overflow-y: hidden;
@@ -15,13 +31,21 @@ body {
     display: flex;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
 .H1Style {
     transform: rotate(90deg);
-    width: 0;
-    margin: 0px 0% 0% 15%;
     text-align: center;
     font-size: 100px;
     position: absolute;
+    margin: 80px;
 }
 
 .DivCards {
@@ -60,6 +84,7 @@ body {
 .DivCards > header > h3 {
     color: white;
     text-shadow: 5px 5px 1px #ff4656;
+    transition: all 0.3s ease-in-out;
 }
 
 .DivCards > img {
@@ -68,6 +93,21 @@ body {
     left: 20%;
     height: 120%;
     object-fit: cover;
+    transform: translate(0);
+    transition: all 1s ease;
+}
+
+.DivCards:hover .ImgCharacter {
+    transform: translate(20px);
+}
+
+.DivCards:hover {
+    background: white;
+}
+
+.DivCards:hover header>h3 {
+    color: black;
+    text-shadow: none;
 }
 
 .ImgAbilities {
