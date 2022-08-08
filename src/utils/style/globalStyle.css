@@ -6,5 +6,72 @@
 
 body {
     margin: 0;
-    background-color: #FF4656;
+}
+
+.DivContainer {
+    width: 50%;
+    overflow-y: hidden;
+    margin: 6% auto;
+    display: flex;
+}
+
+.H1Style {
+    transform: rotate(90deg);
+    width: 0;
+    margin: 0px 0% 0% 15%;
+    text-align: center;
+    font-size: 100px;
+    position: absolute;
+}
+
+.DivCards {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    margin: 5% 7%;
+    background-color: #1f2326;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 20px 0 0 0;
+}
+
+.DivAbilities {
+    background: #39353F;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 20%;
+    left: 15%;
+    position: relative;
+    bottom: 2%;
+    border: 2px solid white;
+    padding: 10px;
+}
+
+.DivCards > header {
+    transform: rotate(90deg);
+    position: relative;
+    top: 90%;
+    right: 50%;
+}
+
+
+.DivCards > header > h3 {
+    color: white;
+    text-shadow: 5px 5px 1px #ff4656;
+}
+
+.DivCards > img {
+    position: relative;
+    top: 16%;
+    left: 20%;
+    height: 120%;
+    object-fit: cover;
+}
+
+.ImgAbilities {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
 }

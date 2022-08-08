@@ -6,11 +6,12 @@ const BNav = styled.nav`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: ${colors.background};
+    background: black;
 `
 
 const LogoImg = styled.img`
-    width: 10%;
+    width: 5%;
+    filter: invert(1);
 `
 
 function Header() {
