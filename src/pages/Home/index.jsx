@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 
 const H4Styled = styled.h4`
     line-height: 2em;
@@ -48,6 +49,7 @@ function Home() {
     const [error, setError] = useState(null)
 
 
+
     useEffect(()=>{
        async function fetchSurvey() {
         //   setDataLoading(true)
@@ -71,13 +73,22 @@ function Home() {
     var chr =  Object.assign({},rdArray[new Date().getDay()])
     var bgColor = Object.assign({},chr['backgroundGradientColors'])
 
+    let x = []
+    for(let i = 0; i < 9; i++) {
+        x.push(<LiStyled><h1>{chr.displayName}</h1></LiStyled>)   
+    }
+
     const DivContainer = styled.div`
         display: flex;
-        height: 89.6vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
         flex-direction: row;
         align-items: center;
         background: linear-gradient(#${bgColor[1]}, #${bgColor[2]}, #${bgColor[3]});
-
     `
 
     return (
@@ -92,15 +103,7 @@ function Home() {
                 </div>
                 <div>
                     <UlStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
-                        <LiStyled><h1>{chr.displayName}</h1></LiStyled>
+                        {x.map(el => el)}
                     </UlStyled>
                     <CharacterImg src={chr.fullPortraitV2} alt="Personnage"/>
                 </div>

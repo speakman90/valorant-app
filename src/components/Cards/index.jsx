@@ -1,9 +1,12 @@
+import { useState } from "react";
 import _ from "lodash";
 
 function Cards({ data, SetRad }) {
 
+    const [isOpen, setOpen] = useState(false)
+
     return (
-        <div className="DivCards" onClick={()=>SetRad(data.displayName)}>
+        <div className="DivCards" onClick={()=>setOpen(!isOpen)}>
             <header>
                 <h3>{data.role.displayName}</h3>
                 <h2>{data.displayName}</h2>
@@ -16,6 +19,9 @@ function Cards({ data, SetRad }) {
                 )
             }
             </div>
+            {
+                isOpen && SetRad(data.abilities)
+            }            
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import AbilitiesCards from '../../components/AbilitiesCards';
 import Cards from '../../components/Cards';
+import AbitilitiesCards from '../../components/AbilitiesCards'
 
 var _ = require('lodash')
 
@@ -31,10 +31,13 @@ function Characters() {
        var radiantId = null
 
        function SetRadiant(RadiantData) {
-          radiantId = RadiantData.uuid
+          radiantId = RadiantData
+          return _.map(radiantId, abs =>(
+            <AbitilitiesCards dataAbilities={abs} />
+          ))
        }
 
-       console.log(RadiantData)
+       console.log('RadiantData',RadiantData)
 
     return (
       <div>
