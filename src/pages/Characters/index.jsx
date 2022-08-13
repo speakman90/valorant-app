@@ -30,12 +30,21 @@ function Characters() {
 
        var radiantId = null
 
-       function SetRadiant(RadiantData) {
-          radiantId = RadiantData
-          return _.map(radiantId, abs =>(
-            <AbitilitiesCards dataAbilities={abs} />
-          ))
+       function SetClick(isOpen, setOpen) {
+          if(isOpen) {
+            setOpen = true
+          }
+          else {
+            setOpen = false
+          }
        }
+
+       function SetRadiant(RadiantData) {
+        radiantId = RadiantData
+        return _.map(radiantId, abs =>(
+          <AbitilitiesCards dataAbilities={abs} />
+        ))
+     }
 
        console.log('RadiantData',RadiantData)
 
@@ -47,7 +56,7 @@ function Characters() {
               <div className="DivContainer">
                   {
                       Array.from(RadiantData).map((value, index) => (
-                          <Cards data={value} SetRad={SetRadiant}/>
+                          <Cards data={value} SetRad={SetRadiant} click={SetClick} />
                       ))
                   }
               </div>
@@ -55,7 +64,6 @@ function Characters() {
         </div>
       </div>
     )
-
 }
 
 export default Characters;

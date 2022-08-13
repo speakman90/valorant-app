@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import _ from 'lodash';
 
 const H4Styled = styled.h4`
     line-height: 2em;
@@ -47,8 +46,6 @@ function Home() {
 
     const [RadiantData, setRadiantData] = useState({})
     const [error, setError] = useState(null)
-
-
 
     useEffect(()=>{
        async function fetchSurvey() {
