@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import Cards from '../../components/Cards';
-import AbitilitiesCards from '../../components/AbilitiesCards'
+// import AbitilitiesCards from '../../components/AbilitiesCards'
 
-var _ = require('lodash')
+// var _ = require('lodash')
 
 function Characters() {
 
-    const [RadiantData, setRadiantData] = useState({})
-    const [error, setError] = useState(null)
+    const [RadiantData, setRadiantData] = useState({});
+    const [error, setError] = useState(null);
+
 
     useEffect(()=>{
         async function fetchSurvey() {
@@ -28,26 +29,6 @@ function Characters() {
          fetchSurvey()
        }, [])
 
-       var radiantId = null
-
-       function SetClick(isOpen, setOpen) {
-          if(isOpen) {
-            setOpen = true
-          }
-          else {
-            setOpen = false
-          }
-       }
-
-       function SetRadiant(RadiantData) {
-        radiantId = RadiantData
-        return _.map(radiantId, abs =>(
-          <AbitilitiesCards dataAbilities={abs} />
-        ))
-     }
-
-       console.log('RadiantData',RadiantData)
-
     return (
       <div>
         <div className="DivSupremeContainer">
@@ -56,7 +37,7 @@ function Characters() {
               <div className="DivContainer">
                   {
                       Array.from(RadiantData).map((value, index) => (
-                          <Cards data={value} SetRad={SetRadiant} click={SetClick} />
+                          <Cards data={value} />
                       ))
                   }
               </div>

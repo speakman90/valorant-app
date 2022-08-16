@@ -1,16 +1,23 @@
 import { useState } from "react";
 import _ from "lodash";
 import styled from 'styled-components';
+import AbitilitiesCards from '../../components/AbilitiesCards'
 
-function Cards({ data, SetRad}) {
-
+function Cards({ data }) {
     
     const [isFocus, setIsActive] = useState(false);
-    const [isOpen, setOpen] = useState(false)
+    const [isOpen, setOpen] = useState(false);
 
-    const handleClick = (isOpen, isFocus) => {
-        setIsActive(!isFocus);
-        setOpen(!isOpen);
+
+    const handleClick = (data) => {
+        var ignoreClickOnMeElement = document.getElementById(data);
+        document.addEventListener('click', function(event) {
+            var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+            if (!isClickInsideElement) {
+                return (setOpen(false), setIsActive(false))
+            }
+                return (setOpen(true), setIsActive(true));
+        })
     }
 
     const DivCards = styled.div`
@@ -22,7 +29,8 @@ function Cards({ data, SetRad}) {
     &:hover {
         transform: ${isFocus && 'none'}!important;
     }
-    `      
+    `
+
     const H3Styles = styled.h3`
     color: ${isFocus && 'black'};
     text-shadow: ${isFocus && 'none'};
@@ -31,8 +39,17 @@ function Cards({ data, SetRad}) {
     }
     `
 
+    let radiantId = null
+
+    function SetRadiant(data) {
+        radiantId = data
+        return _.map(radiantId, abs =>(
+        <AbitilitiesCards dataAbilities={abs} />
+        ))
+    }
+
     return (
-        <DivCards className="DivCards"  onClick={()=>handleClick(isOpen, isFocus)} >
+        <DivCards className="DivCards" id={data.uuid}  onClick={()=>handleClick(data.uuid)} >
             <header>
                 <H3Styles className='H3Styles'>{data.role.displayName}</H3Styles>
                 <h2 style={{ margin : '1px'}}>{data.displayName}</h2>
@@ -45,13 +62,15 @@ function Cards({ data, SetRad}) {
                 )
             }
             </div>
+            {
+                isOpen && (
             <div className="SupremeContainerAbs">
-                <div className="ContainerAbs">
-                    {
-                        isOpen && SetRad(data.abilities)
-                    }            
+                <div className="ContainerAbs" id={data.uuid}>
+                    {SetRadiant(data.abilities)}         
                 </div>
             </div>
+                )
+            }
         </DivCards>
     )
 }

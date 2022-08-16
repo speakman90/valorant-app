@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const H4Styled = styled.h4`
     line-height: 2em;
 `
-
 const DivText = styled.div`
     width: 50%;
     margin: 0 auto 30%;
@@ -89,7 +88,6 @@ function Home() {
     `
 
     return (
-
             <DivContainer>
                 <div style={{ width: '75vw' }}>
                     <DivText>
@@ -105,7 +103,6 @@ function Home() {
                     <CharacterImg src={chr.fullPortraitV2} alt="Personnage"/>
                 </div>
             </DivContainer>
-
     )
 }
 
